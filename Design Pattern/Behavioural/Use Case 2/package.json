@@ -1,0 +1,11 @@
+{
+  "name": "stock-investor-observer",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "A Stock (Subject), Investor (Observer) model that uses the `Observer` pattern which monitors the Stock's price changes and notifies the Investors of the price changes."
+}
