@@ -1,0 +1,17 @@
+{
+  "name": "logger-cor",
+  "version": "1.0.0",
+  "description": "A logging framework that uses the Chain of Responsibility pattern can effectively manage different log levels and logging strategies.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
