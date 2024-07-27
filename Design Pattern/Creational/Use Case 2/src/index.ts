@@ -46,6 +46,6 @@ try {
   calendarService.addEvent(event3);
 } catch (error) {
   if (error instanceof Error) {
-    console.error(error.message);
+    console.error("[ERROR]", error.message);
   }
 }
