@@ -1,5 +1,5 @@
 {
-  "name": "decorator",
+  "name": "role-based-auth-decorator",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Create a user permissions system that dynamically adjusts the permissions of a user based on their role and additional granted permissions. The Decorator pattern can be used to add permissions to a base user role.",
   "devDependencies": {
     "@types/node": "^20.14.12",
     "nodemon": "^3.1.4",
