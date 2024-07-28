@@ -3,6 +3,7 @@ import { CommandParser } from "./utils/CommandParser";
 import { OfficeConfiguration } from "./models/OfficeConfiguration";
 import { ACController } from "./observers/ACController";
 import { LightController } from "./observers/LightController";
+import { UserSession } from "./models/UserSession";
 
 const officeConfig = OfficeConfiguration.getInstance();
 officeConfig.addObserver(new ACController());
@@ -14,8 +15,25 @@ const rl = readline.createInterface({
 });
 
 console.log("Office Meeting Room Management System");
-
+const userSession = UserSession.getInstance();
 rl.on("line", (input) => {
+  const [action, login] = input.split(" ");
+  if (action === "Login") {
+    if (userSession.getRole() !== "") {
+      console.log("You are already logged in.");
+      return;
+    }
+    officeConfig.updateStatistics(
+      `User ${userSession.getRole()} has logged in successfully.`
+    );
+    userSession.setRole(login);
+    console.log("User authenticated successfully.");
+    return;
+  }
+  if (userSession.getRole() === "") {
+    console.log("Please login first.");
+    return;
+  }
   const output = CommandParser.parse(input);
   console.log(output);
 });

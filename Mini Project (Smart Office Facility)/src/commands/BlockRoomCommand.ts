@@ -1,6 +1,7 @@
 import { Booking } from "../models/Booking";
 import { OfficeConfiguration } from "../models/OfficeConfiguration";
 import { Room } from "../models/Room";
+import { UserSession } from "../models/UserSession";
 import { Logger } from "../utils/Logger";
 
 export class BlockRoomCommand {
@@ -23,6 +24,7 @@ export class BlockRoomCommand {
   }
 
   execute(roomId: number, time: string, duration: number): string {
+    const userSession = UserSession.getInstance();
     const officeConfig = OfficeConfiguration.getInstance();
     const room = officeConfig.getRoom(roomId);
     if (!room) {
@@ -53,9 +55,21 @@ export class BlockRoomCommand {
       return `Room ${roomId} is already booked during this time. Cannot book.`;
     }
 
-    const booking = new Booking(startTime, endTime);
+    const booking = new Booking(userSession.getRole(), startTime, endTime);
     room.booking.push(booking);
 
+    // get a duration of time
+    const durationTime = startTime.getTime() - currentTime.getTime();
+    // console.log("Difference time", durationTime + 0.5 * 60 * 1000);
+    setTimeout(() => {
+      booking.statusCheck(room);
+    }, 4000);
+
+    room.officeConfig.updateStatistics(
+      `Room ${roomId} booked from ${startTime.toTimeString()} for ${duration} minutes. Booking ID: ${
+        booking.id
+      }`
+    );
     Logger.log(
       `Booking ID: ${
         booking.id

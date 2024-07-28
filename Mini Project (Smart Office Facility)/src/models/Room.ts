@@ -1,4 +1,5 @@
 import { Booking } from "./Booking";
+import { OfficeConfiguration } from "./OfficeConfiguration";
 
 export class Room {
   id: number;
@@ -6,6 +7,7 @@ export class Room {
   occupants: number;
   occupied: boolean;
   booking: Booking[];
+  officeConfig: OfficeConfiguration;
 
   constructor(id: number) {
     this.id = id;
@@ -13,6 +15,7 @@ export class Room {
     this.occupants = 0;
     this.occupied = false;
     this.booking = [];
+    this.officeConfig = OfficeConfiguration.getInstance();
   }
 
   public addOccupants(count: number): string {
@@ -26,6 +29,9 @@ export class Room {
     }
     this.occupants = count;
     this.occupied = this.occupants > 0;
+    this.officeConfig.updateStatistics(
+      `Room ${this.id} is now occupied by ${this.occupants} occupants and AC and lights turned on.`
+    );
     return `Room ${this.id} is now occupied by ${this.occupants} ${
       count > 1 ? "persons" : "person"
     }. AC and lights turned on.`;

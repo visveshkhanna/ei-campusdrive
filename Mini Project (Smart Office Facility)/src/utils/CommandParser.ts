@@ -3,7 +3,9 @@ import { BlockRoomCommand } from "../commands/BlockRoomCommand";
 import { CancelRoomCommand } from "../commands/CancelRoomCommand";
 import { ConfigRoomCommand } from "../commands/ConfigRoomCommand";
 import { ConfigRoomMaxCapacityCommand } from "../commands/ConfigRoomMaxCapacityCommand";
+import { OfficeStatisticsCommand } from "../commands/OfficeStatisticsCommand";
 import { RoomStatusCommand } from "../commands/RoomStatusCommand";
+import { UserAuthenticationCommand } from "../commands/UserAuthenticationCommand";
 export class CommandParser {
   static parse(command: string): string {
     const [action, ...args] = command.split(" ");
@@ -73,6 +75,12 @@ export class CommandParser {
           return new RoomStatusCommand().execute(parseInt(args[1]));
         }
         break;
+      case "Statistics":
+        return new OfficeStatisticsCommand().execute();
+      case "Logout":
+        return new UserAuthenticationCommand().execute();
+      case "Me":
+        return new UserAuthenticationCommand().me();
       default:
         return "Invalid command. Please enter a valid command.";
     }
