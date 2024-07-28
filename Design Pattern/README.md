@@ -1,4 +1,4 @@
-This is a [Type](https://www.typescriptlang.org/) project.
+This is a [TypeScript](https://www.typescriptlang.org/) project.
 
 
 # EI Study CampusDrive
