@@ -13,5 +13,8 @@ Every use case has a src folder which contains the code for the use case.
 
 To run the code for the use case, run the following command in the terminal:
 ```bash
-npm run dev
+npm run build
+```
+```bash
+npm run start
 ```
