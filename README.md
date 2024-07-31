@@ -31,3 +31,5 @@ In the `Design Pattern` folder, there are three subfolders for each of the desig
 ### Mini Project: Smart Office Facility
 
 The `Smart Office Facility` folder contains the solution for the second problem in the given statements. It includes a `src` folder containing the code for the mini project. To run the code, navigate to the `Smart Office Facility` directory and follow the build instructions provided in the README file.
+
+- [Smart Office Facility](Mini%20Project%20(Smart%20Office%20Facility)/README.md)
