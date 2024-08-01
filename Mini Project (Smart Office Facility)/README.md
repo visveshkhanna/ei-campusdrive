@@ -70,11 +70,11 @@ Commands are parsed and executed using the [`CommandParser`](src/utils/CommandPa
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-repo/office-management-system.git
+    git clone https://github.com/visveshkhanna/ei-campusdrive
     ```
 2. Navigate to the project directory:
     ```sh
-    cd office-management-system
+    cd 'Mini Project (Smart Office Facility)'
     ```
 3. Install dependencies:
     ```sh
