@@ -6,6 +6,9 @@ import { LightController } from "./observers/LightController";
 import { UserSession } from "./models/UserSession";
 
 const officeConfig = OfficeConfiguration.getInstance();
+const userSession = UserSession.getInstance();
+const parser = new CommandParser(officeConfig, userSession);
+
 officeConfig.addObserver(new ACController());
 officeConfig.addObserver(new LightController());
 
@@ -15,7 +18,7 @@ const rl = readline.createInterface({
 });
 
 console.log("Office Meeting Room Management System");
-const userSession = UserSession.getInstance();
+
 rl.on("line", (input) => {
   const [action, login] = input.split(" ");
   if (action === "Login") {
@@ -34,6 +37,6 @@ rl.on("line", (input) => {
     console.log("Please login first.");
     return;
   }
-  const output = CommandParser.parse(input);
+  const output = parser.parse(input);
   console.log(output);
 });

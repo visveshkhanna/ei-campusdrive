@@ -5,6 +5,12 @@ import { UserSession } from "../models/UserSession";
 import { Logger } from "../utils/Logger";
 
 export class BlockRoomCommand {
+  private officeConfig: OfficeConfiguration;
+  private userSession: UserSession;
+  constructor(officeConfig: OfficeConfiguration, userSession: UserSession) {
+    this.officeConfig = officeConfig;
+    this.userSession = userSession;
+  }
   checkBooking(room: Room, start: Date, end: Date): boolean {
     const startTime = start.getTime();
     const endTime = end.getTime();
@@ -24,9 +30,7 @@ export class BlockRoomCommand {
   }
 
   execute(roomId: number, time: string, duration: number): string {
-    const userSession = UserSession.getInstance();
-    const officeConfig = OfficeConfiguration.getInstance();
-    const room = officeConfig.getRoom(roomId);
+    const room = this.officeConfig.getRoom(roomId);
     if (!room) {
       return `Room ${roomId} does not exist.`;
     }
@@ -55,15 +59,16 @@ export class BlockRoomCommand {
       return `Room ${roomId} is already booked during this time. Cannot book.`;
     }
 
-    const booking = new Booking(userSession.getRole(), startTime, endTime);
+    const booking = new Booking(this.userSession.getRole(), startTime, endTime);
     room.booking.push(booking);
 
     // get a duration of time
     const durationTime = startTime.getTime() - currentTime.getTime();
+    // check after 5 minutes of booking start time
     // console.log("Difference time", durationTime + 0.5 * 60 * 1000);
     setTimeout(() => {
       booking.statusCheck(room);
-    }, 4000);
+    }, durationTime + 5 * 60 * 1000);
 
     room.officeConfig.updateStatistics(
       `Room ${roomId} booked from ${startTime.toTimeString()} for ${duration} minutes. Booking ID: ${
