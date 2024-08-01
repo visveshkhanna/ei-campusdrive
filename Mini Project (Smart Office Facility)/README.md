@@ -83,16 +83,16 @@ Commands are parsed and executed using the [`CommandParser`](src/utils/CommandPa
 
 ### Running the Application
 
-To start the application, run:
-```sh
-npm start
-```
-
 Building the Application
 To build the application, run:
 
 ```sh
 npm run build
+```
+
+To start the application, run:
+```sh
+npm start
 ```
 
 ## Inputs
