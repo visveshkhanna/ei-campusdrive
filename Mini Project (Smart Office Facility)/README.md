@@ -1,8 +1,8 @@
-# Office Management System
+# Smart Office Facility
 
 ## Overview
 
-This project is an Office Management System that allows users to manage room bookings, configure office settings, and monitor room statuses. The system uses several design patterns, including Singleton, Command, and Observer patterns, to ensure a scalable and maintainable architecture.
+This project is an Smart Office Facility that allows users to manage room bookings, configure office settings, and monitor room statuses. The system uses several design patterns, including Singleton, Command, and Observer patterns, to ensure a scalable and maintainable architecture.
 
 ## Design Patterns
 
@@ -223,5 +223,5 @@ The application handles the following errors:
 
 ## Conclusion
 
-This project demonstrates the implementation of a Smart Office Facility Management System using TypeScript and the design patterns. The system allows users to configure rooms, add occupants, block rooms, and cancel bookings. It also provides notifications for booking cancellations due to inactivity and automatically cancels bookings if the room is unoccupied for a specified period. The system handles concurrent booking requests and logs any failures in sending email notifications. The application is built using the TypeScript programming language and the design patterns, including the Singleton, Command, and Observer patterns.
+This project demonstrates the implementation of a Smart Office Facility using TypeScript and the design patterns. The system allows users to configure rooms, add occupants, block rooms, and cancel bookings. It also provides notifications for booking cancellations due to inactivity and automatically cancels bookings if the room is unoccupied for a specified period. The system handles concurrent booking requests and logs any failures in sending email notifications. The application is built using the TypeScript programming language and the design patterns, including the Singleton, Command, and Observer patterns.
 
